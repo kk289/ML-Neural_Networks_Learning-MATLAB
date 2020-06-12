@@ -229,5 +229,5 @@ Neural Network Prediction: 6 (digit 6)
 
 1) Machine Learning by Stanford University on [Coursera](https://www.coursera.org/learn/machine-learning)
 
-2) [Neural Network](https://www.coursera.org/learn/machine-learning/home/week/4) 
+2) [Neural Network Learning](https://www.coursera.org/learn/machine-learning/home/week/5) 
 (Please notice that you need to log in to see the programming assignment.)# ML-Neural_Networks_Learning-MATLAB
