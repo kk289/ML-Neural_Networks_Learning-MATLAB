@@ -59,6 +59,33 @@ In ex4.m, the code randomly selects selects 100 rows from X and passes those row
 ![plot](https://github.com/kk289/ML-Multiclass_Classification_and_Neural_Network-MATLAB/blob/master/Figure/datavisualize.jpg)
 - Figure: Dataset
 
+### Part 1.2: Model representation
+Our neural network has 3 layers – an input layer, a hidden layer and an output layer. Recall that our inputs are pixel values of digit images. Since the images are of size 20×20, this gives us 400 input layer units (excluding the extra bias unit which always outputs +1). As before, the training data will be loaded into the variables X and y.
+
+For this portion we will use following MATLAB script
+```
+ex4.m
+```
+```
+% Load saved matrices from file
+load('ex4weights.mat');
+% The matrices Theta1 and Theta2 will now be in workspace
+% Theta1 has size 25 x 401
+% Theta2 has size 10 x 26
+```
+
+### Part 1.3: Feedforward and cost function
+We will implement the cost function and gradient for the neural network. 
+
+The cost function for the neural network (without regularization):  
+![costfunction](Figure/costfunction.png)
+
+
+
+
+
+
+
 ### Part 1.3: Vectorizing Logistic Regression
 
 We will be using multiple one-vs-all logistic regression models to build a multi-class classifier. Since there are 10 classes, you will need to train 10 separate logistic regression classifiers. To make this training efficient, it is important to ensure that our code is well vectorized.
