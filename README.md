@@ -29,22 +29,17 @@ Machine Learning course from Stanford University on Coursera.
 
 [⋆] nnCostFunction.m - Neural network cost function
 
-## Part 1: Multi-class Classification
-
-For this part, we will use logistic regression and neural networks to recognize handwritten digits (from 0 to 9).
-
-Automated handwritten digit recognition is widely used today - from recognizing zip codes (postal codes) on mail envelopes to recognizing amounts written on bank checks.
-
-In the first part, we will extend your previous implemention of logistic regression and apply it to one-vs-all classification.
+## Part 1: Neural Networks
+In previous part, We implemented feedforward propagation for neural networks and used it to predict handwritten digits with the weights we provided. In this part, we will implement the *backpropagation algorithm* to learn the parameters for the neural network.
 
 For this portion we will use following MATLAB script
 ```
-ex3.m
+ex4.m
 ```
 
-### Part 1.1: Dataset
+### Dataset
 
-Given dataset *ex3data1.mat* contains 5000 training examples of handwritten digits, where each training example is a 20 pixel by 20 pixel grayscale image of the digit. Each pixel is represented by a floating point number indicating the grayscale intensity at that location. The 20 by 20 grid of pixels is “unrolled” into a 400-dimensional vector. 
+Given dataset *ex4data1.mat* contains 5000 training examples of handwritten digits, where each training example is a 20 pixel by 20 pixel grayscale image of the digit. Each pixel is represented by a floating point number indicating the grayscale intensity at that location. The 20 by 20 grid of pixels is “unrolled” into a 400-dimensional vector. 
 
 Each of these training examples becomes a single row in our data matrix X. This gives us a 5000 by 400 matrix X where every row is a training example for a handwritten digit image.
 
@@ -52,16 +47,16 @@ The second part of the training set is a 5000-dimensional vector y that contains
 
 ```
 % Load saved matrices from file
-load('ex3data1.mat');
-% The matrices X and y will now be in your Octave environment
+load('ex4data1.mat');
+% The matrices X and y will now be in Octave environment
 ```
 
-### Part 1.2: Visualizing the data
+### Part 1.1: Visualizing the data
 #### displayData.m - Function to help visualize the dataset
 
-In ex3.m, the code randomly selects selects 100 rows from X and passes those rows to the displayData function. This function maps each row to a 20 pixel by 20 pixel grayscale image and displays the images together. 
+In ex4.m, the code randomly selects selects 100 rows from X and passes those rows to the displayData function. This function maps each row to a 20 pixel by 20 pixel grayscale image and displays the images together. 
 
-![plot](Figure/datavisualize.jpg)
+![plot](https://github.com/kk289/ML-Multiclass_Classification_and_Neural_Network-MATLAB/blob/master/Figure/datavisualize.jpg)
 - Figure: Dataset
 
 ### Part 1.3: Vectorizing Logistic Regression
