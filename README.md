@@ -7,26 +7,27 @@ Machine Learning course from Stanford University on Coursera.
 - MATLAB 2018 b
 
 ### Dataset
-- ex3data1.mat
-- ex3weights.mat
+- ex4data1.mat
+- ex4weights.mat
 
 ### Files included in this repo
-- ex3.m - Octave/MATLAB script that steps through part 1
-- ex3_nn.m - Octave/MATLAB script that steps through part 2
-- ex3data1.mat - Training set of hand-written digits
-- ex3weights.mat - Initial weights for the neural network exercise
-- submit.m - Submission script that sends our solutions to servers
+- ex4.m - Octave/MATLAB script that steps you through the exercise 
+- ex4data1.mat - Training set of hand-written digits
+- ex4weights.mat - Neural network parameters for exercise 4 
+- submit.m - Submission script that sends your solutions to our servers 
 - displayData.m - Function to help visualize the dataset
-- fmincg.m - Function minimization routine (similar to fminunc)
+- fmincg.m - Function minimization routine (similar to fminunc) 
 - sigmoid.m - Sigmoid function
+- computeNumericalGradient.m - Numerically compute gradients 
+- checkNNGradients.m - Function to help check your gradients 
+- debugInitializeWeights.m - Function for initializing weights 
+- predict.m - Neural network prediction function
 
-[⋆] lrCostFunction.m - Logistic regression cost function
+[⋆] sigmoidGradient.m - Compute the gradient of the sigmoid function 
 
-[⋆] oneVsAll.m - Train a one-vs-all multi-class classifier
+[⋆] randInitializeWeights.m - Randomly initialize weights
 
-[⋆] predictOneVsAll.m - Predict using a one-vs-all multi-class classifier
-
-[⋆] predict.m - Neural network prediction function
+[⋆] nnCostFunction.m - Neural network cost function
 
 ## Part 1: Multi-class Classification
 
