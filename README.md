@@ -86,6 +86,7 @@ The cost function for the neural network (without regularization):
 
 
 
+
 ### Part 1.3: Vectorizing Logistic Regression
 
 We will be using multiple one-vs-all logistic regression models to build a multi-class classifier. Since there are 10 classes, you will need to train 10 separate logistic regression classifiers. To make this training efficient, it is important to ensure that our code is well vectorized.
