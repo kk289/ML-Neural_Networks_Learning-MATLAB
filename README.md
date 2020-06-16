@@ -1,6 +1,6 @@
 # Machine Learning (MATLAB) - Neural Networks Learning
 
-Machine Learning course from Stanford University on Coursera.
+Machine Learning course from Stanford University on [Coursera](https://www.coursera.org/learn/machine-learning).
 
 ### Environment
 - macOS Catalina (version 10.15.3)
@@ -83,6 +83,12 @@ The cost function for the neural network (without regularization):
 
 
 
+## Course Links
+
+1) Machine Learning by Stanford University on [Coursera](https://www.coursera.org/learn/machine-learning)
+
+2) [Neural Network Learning](https://www.coursera.org/learn/machine-learning/home/week/5) 
+(Please notice that you need to log in to see the programming assignment.)# ML-Neural_Networks_Learning-MATLAB
 
 
 
@@ -249,9 +255,3 @@ Neural Network Prediction: 6 (digit 6)
 <img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/wrong4.jpg" width="425"/>
 
 
-## Course Links
-
-1) Machine Learning by Stanford University on [Coursera](https://www.coursera.org/learn/machine-learning)
-
-2) [Neural Network Learning](https://www.coursera.org/learn/machine-learning/home/week/5) 
-(Please notice that you need to log in to see the programming assignment.)# ML-Neural_Networks_Learning-MATLAB
