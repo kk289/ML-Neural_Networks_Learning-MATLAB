@@ -33,9 +33,11 @@ Theta2_grad = zeros(size(Theta2));
 %         variable J. After implementing Part 1, you can verify that your
 %         cost function computation is correct by verifying the cost
 %         computed in ex4.m
-%
+
+% unregularzied cost function
 h = sigmoid(X * theta);
 J = (1/m) * sum(sum((-y)' * log(h)-(1-y)' * log(1-h)));
+
 
 % Part 2: Implement the backpropagation algorithm to compute the gradients
 %         Theta1_grad and Theta2_grad. You should return the partial derivatives of
