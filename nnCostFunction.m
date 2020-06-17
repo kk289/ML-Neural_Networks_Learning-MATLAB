@@ -73,7 +73,13 @@ h = sigmoid(Theta2 * h2');
 % unregularzied cost function
 J = (1/m) * sum(sum((-y_mat) .* log(h)-(1-y_mat) .* log(1-h)));
 
+% Regularization term
+term1 = sum(sum(Theta1(:,2:end).^2));
+term2 = sum(sum(Theta2(:,2:end).^2));
+Regular = (lambda/(2 * m)) * (term1 + term2);
 
+% regularized logistic regression
+J = J + Regular;
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
