@@ -136,6 +136,7 @@ Cost at parameters (loaded from ex4weights): 0.383770
 ## Part 2: Backpropagation
 We will implement the backpropagation algorithm to compute the gradient for the neural network cost function.
 
+### Part 2.1: Sigmoid Gradient
 Let start with implementing the sigmoid gradient function. 
 ![gradient](Figure/gradient.png)
 
@@ -149,9 +150,19 @@ g = 1.0 ./ (1.0 + exp(-z));
 g = sigmoid(z) .* (1 - sigmoid(z));
 ```
 
-
 Once we have computed the gradient, we will be able to train the neural network by minimizing the cost function J(Θ) using an advanced optimizer such as fmincg.
 
+### Part 2.2: Random initialization
+When training neural networks, it is important to randomly initialize the parameters for symmetry breaking. 
+One effective strategy for random initialization is to randomly select values for Θ(l) uniformly in the range [−εinit, εinit]. We should use εinit = 0.12. This range of values ensures that the parameters are kept small and makes the learning more efficient.
+
+```
+% Randomly initialize the weights for Θ to small values
+epsilon init = 0.12;
+W = rand(L_out, 1 + L_in) * 2 * epsilon_init − epsilon_init;
+```
+
+### Part 2.3: Backpropagation
 First implement the backpropagation algorithm to compute the gradients for the parameters for the (unregularized) neural network.
 
 ```
