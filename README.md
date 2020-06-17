@@ -158,7 +158,7 @@ One effective strategy for random initialization is to randomly select values fo
 
 ```
 % Randomly initialize the weights for Θ to small values
-epsilon init = 0.12;
+epsilon_init = 0.12;
 W = rand(L_out, 1 + L_in) * 2 * epsilon_init − epsilon_init;
 ```
 
@@ -168,7 +168,6 @@ First implement the backpropagation algorithm to compute the gradients for the p
 ```
 % unregularized gradient function for neural network
 
-
 ```
 
 ```
@@ -176,6 +175,8 @@ First implement the backpropagation algorithm to compute the gradients for the p
 
 
 ```
+
+### Part 2.4: Gradient Checking
 
 
 ## Course Links
