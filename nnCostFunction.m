@@ -84,4 +84,8 @@ J = J + Regular;
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
+
+
+
+
 end
