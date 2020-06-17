@@ -146,7 +146,7 @@ g = 1.0 ./ (1.0 + exp(-z));
 
 #### sigmoidGradient.m - Compute the gradient of the sigmoid function 
 ```
-
+g = sigmoid(z) .* (1 - sigmoid(z));
 ```
 
 
