@@ -34,11 +34,6 @@ Theta2_grad = zeros(size(Theta2));
 %         cost function computation is correct by verifying the cost
 %         computed in ex4.m
 
-% unregularzied cost function
-h = sigmoid(X * theta);
-J = (1/m) * sum(sum((-y)' * log(h)-(1-y)' * log(1-h)));
-
-
 % Part 2: Implement the backpropagation algorithm to compute the gradients
 %         Theta1_grad and Theta2_grad. You should return the partial derivatives of
 %         the cost function with respect to Theta1 and Theta2 in Theta1_grad and
@@ -53,8 +48,6 @@ J = (1/m) * sum(sum((-y)' * log(h)-(1-y)' * log(1-h)));
 %         Hint: We recommend implementing backpropagation using a for-loop
 %               over the training examples if you are implementing it for the 
 %               first time.
-%
-
 
 % Part 3: Implement regularization with the cost function and gradients.
 %
@@ -64,10 +57,23 @@ J = (1/m) * sum(sum((-y)' * log(h)-(1-y)' * log(1-h)));
 %               and Theta2_grad from Part 2.
 %
 
+% Variable y in matrics: recode the labels as vectors containing only values 0 or 1,
+y_mat = zeros(num_labels, m); 
+for (i = 1:m)
+  y_mat(y(i),i) = 1;
+end
 
-% -------------------------------------------------------------
+% Feedforward propagation
+X = [ones(m,1) X];
 
-% =========================================================================
+h2 = sigmoid(Theta1 * X'); % Output of hidden layer, a size(Theta1, 1) x m matrix
+h2 = [ones(m,1) h2'];
+h = sigmoid(Theta2 * h2');
+
+% unregularzied cost function
+J = (1/m) * sum(sum((-y_mat) .* log(h)-(1-y_mat) .* log(1-h)));
+
+
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
