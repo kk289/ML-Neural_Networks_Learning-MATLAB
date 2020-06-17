@@ -75,11 +75,25 @@ load('ex4weights.mat');
 ```
 
 ### Part 1.3: Feedforward and cost function
-We will implement the cost function and gradient for the neural network. 
+We will implement the cost function for the neural network with *unregularization*
 
 The cost function for the neural network (without regularization):  
 ![costfunction](Figure/costfunction.png)
 
+#### nnCostFunction.m - Neural network cost function
+Implements the neural network cost function for a two layer neural network which performs classification
+
+```
+h = sigmoid(X * theta);
+J = (1/m) * sum(sum((-y)' * log(h)-(1-y)' * log(1-h))) 
+
+```
+
+### Part 1.3: Feedforward and cost function
+We will implement the cost function for neural networks with *regularization*
+
+The cost function for the neural network (without regularization):  
+![costfunction_reg](Figure/costfunction_reg.png)
 
 
 
