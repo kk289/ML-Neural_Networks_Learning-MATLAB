@@ -167,7 +167,36 @@ First implement the backpropagation algorithm to compute the gradients for the p
 
 ```
 % unregularized gradient function for neural network
+Theta1_d = zeros(hidden_layer_size,1);
+Theta2_d = zeros(num_labels,1);
+for t = 1:m
+    % Feedforward propagation
+    %disp(size(X));
+    a1 = [1; X(t,:)'];
+    %disp(size(a1));
+    z2 = Theta1 * a1;
+    a2 = sigmoid(z2);
+    
+    a2 = [1;a2]; % add bias
+    z3 = Theta2 * a2;
+    a3 = sigmoid(z3);
+    
+    % backpropagation
+    
+    % For each output unit k in layer 3 (the output layer), we set
+    delta_3 = a3 - y_mat(:,t);
+    
+    new = Theta2' * delta_3;
+    
+    delta_2 = new(2:end) .* sigmoidGradient(z2);
+  
+    Theta1_d = Theta1_d + delta_2 * a1';
+	  Theta2_d = Theta2_d + delta_3 * a2';
+   	
+end
 
+Theta1_grad = Theta1_d / m;
+Theta2_grad = Theta2_d / m;
 ```
 
 ```
