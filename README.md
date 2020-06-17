@@ -84,13 +84,30 @@ The cost function for the neural network (without regularization):
 Implements the neural network cost function for a two layer neural network which performs classification
 
 ```
-% unregularization cost function
-h = sigmoid(X * theta);
-J = (1/m) * sum(sum((-y)' * log(h)-(1-y)' * log(1-h))) 
-
+% Variable y in matrics: recode the labels as vectors containing only values 0 or 1,
+y_mat = zeros(num_labels, m); 
+for (i = 1:m)
+  y_mat(y(i),i) = 1;
+end
 ```
 
+```
+% Feedforward propagation
+X = [ones(m,1) X];
 
+h2 = sigmoid(Theta1 * X'); % Output of hidden layer, a size(Theta1, 1) x m matrix
+h2 = [ones(m,1) h2'];
+h = sigmoid(Theta2 * h2');
+```
+
+```
+% unregularization cost function
+J = (1/m) * sum(sum((-y_mat) .* log(h)-(1-y_mat) .* log(1-h)));
+```
+
+Result: 
+Feedforward Using Neural Network ...
+Cost at parameters (loaded from ex4weights): *0.287629* 
 
 
 ### Part 1.4: Regularized cost function 
