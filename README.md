@@ -84,17 +84,47 @@ The cost function for the neural network (without regularization):
 Implements the neural network cost function for a two layer neural network which performs classification
 
 ```
+% unregularization cost function
 h = sigmoid(X * theta);
 J = (1/m) * sum(sum((-y)' * log(h)-(1-y)' * log(1-h))) 
 
 ```
 
-### Part 1.3: Feedforward and cost function
+
+
+
+### Part 1.4: Regularized cost function 
 We will implement the cost function for neural networks with *regularization*
 
 The cost function for the neural network (without regularization):  
 ![costfunction_reg](Figure/costfunction_reg.png)
 
+```
+% regularized cost function
+
+
+```
+
+
+
+## Part 2: Backpropagation
+We will implement the backpropagation algorithm to compute the gradient for the neural network cost function.
+
+Once we have computed the gradient, we will be able to train the neural network by minimizing the cost function J(Θ) using an advanced optimizer such as fmincg.
+
+First implement the backpropagation algorithm to compute the gradients for the parameters for the (unregularized) neural network.
+
+```
+% unregularized gradient function for neural network
+
+
+```
+
+```
+% regularized gradient function for neural network
+
+
+```
 
 
 ## Course Links
@@ -103,169 +133,3 @@ The cost function for the neural network (without regularization):
 
 2) [Neural Network Learning](https://www.coursera.org/learn/machine-learning/home/week/5) 
 (Please notice that you need to log in to see the programming assignment.)# ML-Neural_Networks_Learning-MATLAB
-
-
-
-
-### Part 1.3: Vectorizing Logistic Regression
-
-We will be using multiple one-vs-all logistic regression models to build a multi-class classifier. Since there are 10 classes, you will need to train 10 separate logistic regression classifiers. To make this training efficient, it is important to ensure that our code is well vectorized.
-
-In this section, we will implement a vectorized version of logistic regression that does not employ any *for* loops.
-
-#### Vectorizing the cost function
-We will begin by writing a vectorized version of the cost function. 
-
-Cost Function in Unregularized logistic regresssion
-
-![costfunction](https://github.com/kk289/ML-Logistic_Regression-MATLAB/blob/master/Figure/costFunction.png)
-
-We will write the unregularized cost function in the file *lrcostFunction.m*. We should also use a vectorized approach for the rest of the cost function. A fully vectorized version of lrCostFunction.m should not contain any loops.
-
-##### lrCostFunction.m - Logistic regression cost function
-```
-h = sigmoid(X * theta);
-J = (1/m) * (-y)' * log(h)-(1-y)' * log(1-h) + (lambda/(2 * m)) * sum(theta(2:end).^2);
-```
-
-#### Vectorizing the gradient
-Gradient of the unregularized logistic regression cost: 
-
-![gradient](https://github.com/kk289/ML-Logistic_Regression-MATLAB/blob/master/Figure/gradient.png)
-
-```
-grad = (1/m * X' * (h - y)) + [0;(lambda/m) * theta(2:end)];
-```
-
-#### Vectorizing regularized logistic regression
-The cost function in Regularized logistic regression: 
-
-![regularcost](https://github.com/kk289/ML-Logistic_Regression-MATLAB/blob/master/Figure/regularcostFunction.png)
-
-NOTE: We should not be regularizing *θ_0* which is used for the bias term.
-
-```
-function [J, grad] = lrCostFunction(theta, X, y, lambda)
-
-% Initialize some useful values
-m = length(y); % number of training examples
-
-h = sigmoid(X * theta);
-J = (1/m) * (-y)' * log(h)-(1-y)' * log(1-h) + (lambda/(2 * m)) * sum(theta(2:end).^2);
-grad = (1/m * X' * (h - y)) + [0;(lambda/m) * theta(2:end)];
-
-end
-```
-
-### Part 1.4: One-vs-all Classification
-In this part, we will implement one-vs-all classification by training multiple regularized logistic regression classifiers, one for each of the K classes in our dataset. In the handwritten digits dataset, K = 10, but the code should work for any value of K.
-
-Furthermore, we will be using *fmincg* for this part (instead of *fminunc*). *fmincg* works similarly to *fminunc*, but is more more efficient for dealing with a large number of parameters.
-
-##### oneVsAll.m - Train a one-vs-all multi-class classifier
-```
-initial_theta = zeros(n + 1, 1);
-
-options = optimset('GradObj', 'on', 'MaxIter', 50);
-
-for(i = 1:num_labels)
-    all_theta(i,:) = fmincg (@(t)(lrCostFunction(t, X, (y == i), lambda)), initial_theta, options);
-end;
-```
-
-#### One-vs-all Prediction
-We should compute the “probability” that it belongs to each class using the trained logistic regression classifiers.
-
-*one-vs-all* prediction function will pick the class for which the corresponding logistic regression classifier outputs the highest probability and return the class label (1, 2,..., or K) as the prediction for the input example.
-
-redictOneVsAll.m to use the one-vs-all classifier to make predictions.
-
-##### predictOneVsAll.m - Predict using a one-vs-all multi-class classifier
-```
-h = sigmoid(X * all_theta');
-
-for(i = 1:m)
-    [dummy, p(i)] = max(h(i,:));
-end;
-```
-
-The training set accuracy is about 94.9% (i.e., it classifies 94.9% of the examples in the training set correctly).
-
-
-
-## Part 2: Neural Networks
-In previous part, we implemented multi-class logistic regression to recognize handwritten digits. However, logistic regression cannot form more complex hypotheses as it is only a linear classifier.
-
-In this part, we will implement a neural network to recognize handwritten digits using the same training set as before. The neural network will be able to represent complex models that form non-linear hypotheses. 
-
-We will be using parameters from a neural network that we have already trained. Our goal is to implement the *feedforward propagation algorithm* to use our weights for prediction.
-
-(Next time we will write the *backpropagation algorithm* for learning the neural network parameters.)
-
-### Part 2.1: Model representation
-Our neural network has 3 layers – an input layer, a hidden layer and an output layer. Recall that our inputs are pixel values of digit images. Since the images are of size 20×20, this gives us 400 input layer units (excluding the extra bias unit which always outputs +1). As before, the training data will be loaded into the variables X and y.
-
-For this portion we will use following MATLAB script
-```
-ex3_nn.m
-```
-
-### Part 2.2: Feedforward Propagation and Prediction
-Now you will implement *feedforward propagation* for the neural network. We will need to complete the code in predict.m to return the neural network’s prediction.
-
-##### predict.m - Neural network prediction function
-```
-X = [ones(m,1) X];
-h2 = sigmoid(Theta1*X'); % Output of hidden layer, a size(Theta1, 1) x m matrix
-h2 = [ones(m,1) h2'];
-h = sigmoid(Theta2 * h2');
-[dummy, p] = max(h', [ ], 2);
-```
-
-The training set accuracy is about 97.52%.
-
-## Result 
-
-Initial dataset:
-
-![plot](Figure/datavisualize.jpg)
-- Figure: Dataset
-
-### Correct Prediction
-Neural Network Prediction: 0 (digit 0)  
-<img src="https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict0.jpg" width="425"/> <img src="https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict0(1).jpg" width ="425"/>
-
-Neural Network Prediction: 1 (digit 1)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict1.jpg" width="425"/>
-
-Neural Network Prediction: 2 (digit 2)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict2.jpg" width="425"/> <img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict2(1).jpg" width="425"/>
-
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict2(2).jpg" width="425"/> <img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict2(3).jpg" width="425"/>
-
-Neural Network Prediction: 3 (digit 3)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict3.jpg" width="425"/>
-
-Neural Network Prediction: 4 (digit 4)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict4.jpg" width="425"/>
-
-Neural Network Prediction: 5 (digit 5)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict5.jpg" width="425"/>
-
-Neural Network Prediction: 6 (digit 6)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict6.jpg" width="425"/>
-
-Neural Network Prediction: 7 (digit 7)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict7.jpg" width="425"/> <img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict7(1).jpg" width="425"/>
-
-Neural Network Prediction: 8 (digit 8)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict8.jpg" width="425"/>
-
-Neural Network Prediction: 9 (digit 9)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict9.jpg" width="425"/> <img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/predict9(1).jpg" width="425"/>
-
-### Wrong Prediction
-Neural Network Prediction: 6 (digit 6)  
-<img src= "https://github.com/kk289/ML-Neural_Network-MATLAB/blob/master/Figure/wrong4.jpg" width="425"/>
-
-
