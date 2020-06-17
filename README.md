@@ -136,6 +136,20 @@ Cost at parameters (loaded from ex4weights): 0.383770
 ## Part 2: Backpropagation
 We will implement the backpropagation algorithm to compute the gradient for the neural network cost function.
 
+Let start with implementing the sigmoid gradient function. 
+![gradient](Figure/gradient.png)
+
+```
+% sigmoid function
+g = 1.0 ./ (1.0 + exp(-z));
+```
+
+#### sigmoidGradient.m - Compute the gradient of the sigmoid function 
+```
+
+```
+
+
 Once we have computed the gradient, we will be able to train the neural network by minimizing the cost function J(Θ) using an advanced optimizer such as fmincg.
 
 First implement the backpropagation algorithm to compute the gradients for the parameters for the (unregularized) neural network.
