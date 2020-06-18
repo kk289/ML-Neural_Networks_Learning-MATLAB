@@ -225,7 +225,7 @@ We got training Set Accuracy: *94.340000*
 ![hidden](Figure/hidden.jpg)    
 Fig. Visualization of hidden units (MaxIter:50, lambda:1)
 
-We can able to see the changes in the visualizations of the hidden units when we changes the learning parameters *lambda* and *MaxIter*.
+We can able to see the change in the visualizations of the hidden units when we changes the learning parameters *lambda* and *MaxIter*.
 
 #### MaxIter: 20, Lambda: 0.5, Training Set Accuracy: *86.82* 
 ![hidden](Figure/hidden2.jpg)   
