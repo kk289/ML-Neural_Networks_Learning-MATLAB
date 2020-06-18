@@ -33,8 +33,8 @@ function submit()
   conf.output = @output;
 
   submitWithConfiguration(conf);
-end
-
+ end
+  
 function out = output(partId, auxstring)
   % Random Test Cases
   X = reshape(3 * sin(1:1:30), 3, 10);
@@ -59,5 +59,5 @@ function out = output(partId, auxstring)
     [J, grad] = nnCostFunction(t, 2, 4, 4, Xm, ym, 1.5);
     out = sprintf('%0.5f ', J);
     out = [out sprintf('%0.5f ', grad)];
-  end 
+  end  
 end
