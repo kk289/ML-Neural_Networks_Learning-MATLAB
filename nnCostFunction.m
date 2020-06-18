@@ -19,11 +19,6 @@ Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):en
 
 % Setup some useful variables
 m = size(X, 1);
-         
-% You need to return the following variables correctly 
-J = 0;
-Theta1_grad = zeros(size(Theta1));
-Theta2_grad = zeros(size(Theta2));
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
@@ -74,8 +69,8 @@ h = sigmoid(Theta2 * h2');
 J = (1/m) * sum(sum((-y_mat) .* log(h)-(1-y_mat) .* log(1-h)));
 
 % Regularization term
-term1 = sum(sum(Theta1(:,2:end).^2));
-term2 = sum(sum(Theta2(:,2:end).^2));
+term1 = sum(sum(Theta1(:,2:end).^2)); % exclude bias term -> 1st col
+term2 = sum(sum(Theta2(:,2:end).^2)); % exclude bias term -> 1st col
 Regular = (lambda/(2 * m)) * (term1 + term2);
 
 % regularized logistic regression
@@ -84,6 +79,7 @@ J = J + Regular;
 % 2.3 Backpropagation
 Theta1_d = zeros(hidden_layer_size,1);
 Theta2_d = zeros(num_labels,1);
+
 for t = 1:m
     % Feedforward propagation
     %disp(size(X));
@@ -106,12 +102,18 @@ for t = 1:m
     delta_2 = new(2:end) .* sigmoidGradient(z2);
   
     Theta1_d = Theta1_d + delta_2 * a1';
-	Theta2_d = Theta2_d + delta_3 * a2';
-   	
+	Theta2_d = Theta2_d + delta_3 * a2';   	
 end
 
-Theta1_grad = Theta1_d / m;
-Theta2_grad = Theta2_d / m;
+% Theta1_grad = Theta1_d / m;
+% Theta2_grad = Theta2_d / m;
+
+% Regularization gradient function
+reg_term1 = (lambda/m) * [zeros(hidden_layer_size,1) Theta1(:,2:end)];
+Theta1_grad = (Theta1_d / m) + reg_term1;
+
+reg_term2 = (lambda/m) * [zeros(num_labels,1) Theta2(:,2:end)];
+Theta2_grad = (Theta2_d / m) + reg_term2;
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
