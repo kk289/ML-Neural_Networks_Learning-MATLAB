@@ -240,7 +240,7 @@ Fig. Visualization of hidden units (MaxIter:40, lambda:0.4)
 Fig. Visualization of hidden units (MaxIter:80, lambda:0.8)
 
 #### MaxIter: 100, Lambda: 0.3, Training Set Accuracy: *98.94*  
-![hidden](Figure/hidden1.jpg)   
+![hidden](Figure/hidden1.jpg) 
 Fig. Visualization of hidden units (MaxIter:100, lambda:0.3)
 
 
