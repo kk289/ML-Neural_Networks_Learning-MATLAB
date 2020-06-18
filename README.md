@@ -222,30 +222,25 @@ We implemented 50 iterations (e.g. set MaxIter to 50). We may try to train the n
 We got training Set Accuracy: *94.340000*
 
 #### MaxIter: 50, Lambda: 1, Training Set Accuracy: *94.34* 
-![hidden](Figure/hidden.jpg)
-
+![hidden](Figure/hidden.jpg)    
 Fig. Visualization of hidden units (MaxIter:50, lambda:1)
 
 We can able to see the changes in the visualizations of the hidden units when we changes the learning parameters *lambda* and *MaxIter*.
 
 #### MaxIter: 20, Lambda: 0.5, Training Set Accuracy: *86.82* 
-![hidden](Figure/hidden2.jpg) 
-
+![hidden](Figure/hidden2.jpg)   
 Fig. Visualization of hidden units (MaxIter:20, lambda:0.5)
 
 #### MaxIter: 40, Lambda: 0.4, Training Set Accuracy: *94.06* 
-![hidden](Figure/hidden3.jpg) 
-
+![hidden](Figure/hidden3.jpg)   
 Fig. Visualization of hidden units (MaxIter:40, lambda:0.4)
 
 #### MaxIter: 80, Lambda: 0.8, Training Set Accuracy: *97.46*  
-![hidden](Figure/hidden4.jpg) 
-
+![hidden](Figure/hidden4.jpg)   
 Fig. Visualization of hidden units (MaxIter:80, lambda:0.8)
 
 #### MaxIter: 100, Lambda: 0.3, Training Set Accuracy: *98.94*  
-![hidden](Figure/hidden1.jpg) 
-
+![hidden](Figure/hidden1.jpg)   
 Fig. Visualization of hidden units (MaxIter:100, lambda:0.3)
 
 
