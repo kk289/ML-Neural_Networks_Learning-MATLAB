@@ -239,11 +239,17 @@ Fig. Visualization of hidden units (MaxIter:40, lambda:0.4)
 ![hidden](Figure/hidden4.jpg)   
 Fig. Visualization of hidden units (MaxIter:80, lambda:0.8)
 
-#### MaxIter: 100, Lambda: 0.3, Training Set Accuracy: *98.94* *Best Accuracy*
+#### MaxIter: 100, Lambda: 0.3, Training Set Accuracy: *98.94*
 ![hidden](Figure/hidden1.jpg)   
 Fig. Visualization of hidden units (MaxIter:100, lambda:0.3)
 
+#### MaxIter: 200, Lambda: 0.3, Training Set Accuracy: *99.96* (*Best Accuracy*)
+![hidden](Figure/hidden5.jpg)   
+Fig. Visualization of hidden units (MaxIter:200, lambda:0.3)
 
+#### MaxIter: 300, Lambda: 0.6, Training Set Accuracy: *99.72*
+![hidden](Figure/hidden6.jpg)   
+Fig. Visualization of hidden units (MaxIter:300, lambda:0.6)
 
 
 ## Course Links
